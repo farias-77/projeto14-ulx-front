@@ -19,8 +19,11 @@ export default function Header(){
 }
 
 const Container = styled.div`
-    height: 150px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
 
     background-color: #6E0AD6;
 `;  
@@ -44,7 +47,7 @@ const Logo = styled.div`
     p{
         font-family: 'Roboto';
         font-style: normal;
-        font-weight: 400;
+        font-weight: 700;
         font-size: 18px;
         line-height: 21px;
         color: #000000;
