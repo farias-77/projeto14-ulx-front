@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home/Home.js";
 import Header from "./Header/Header.js";
+import ProductPage from "./ProductPage/ProductPage.js";
 
 export default function App(){
 
@@ -10,6 +11,7 @@ export default function App(){
             <Header />
             <Routes>
                 <Route path="/home" element={<Home />} />
+                <Route path="/product" element={<ProductPage />} />
             </Routes>
         </BrowserRouter>
     )
