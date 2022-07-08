@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Bars } from "react-loader-spinner";
 
 export default function ProductPage() {
     
@@ -12,7 +13,8 @@ export default function ProductPage() {
         price: "90M",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut justo orci, ornare et enim id, hendrerit condimentum est. Mauris sit amet condimentum ante. Fusce molestie posuere eleifend. Sed facilisis massa et diam mattis rhoncus. Sed bibendum urna et lacus ultricies mollis. Vestibulum fermentum sed massa non finibus. Morbi tempor sed arcu sollicitudin suscipit. Nunc eleifend lorem eu nisi lobortis, vitae ullamcorper urna gravida. Etiam pharetra pellentesque molestie. Fusce ut ipsum nec mauris maximus rutrum. Vestibulum mauris nisi, euismod vel efficitur id, auctor vitae tortor. Phasellus tincidunt aliquet porta. Nulla suscipit ac dolor id egestas. Proin hendrerit, turpis non ullamcorper vehicula, leo dolor vulputate nisi, quis tincidunt dui velit quis sapien",
         url: "https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-    })
+    });
+    const [carregando, setCarregando] = useState(false);
 
     useEffect(() => {
 
@@ -32,6 +34,15 @@ export default function ProductPage() {
         console.log(productId)
     }, []);
     
+    function addCart(){
+        
+        //lógica para add ao carrinho 
+        
+        setCarregando(true);
+        setTimeout(() => {setCarregando(false)}, 4000);
+    }
+
+
     return (
         <Container>
             <img
@@ -43,6 +54,18 @@ export default function ProductPage() {
                 <h4>{ product.price ? product.price : "loading..." }</h4>
                 <h3>{ product.description ? product.description : "loading..."}</h3>
             </ProductInfo>
+            <Botao onClick={() => addCart() }>
+                    {carregando ? (
+                        <Bars
+                            height="40"
+                            width="40"
+                            color="white"
+                            ariaLabel="loading"
+                        />
+                    ) : (
+                        <p>Adicionar ao carrinho</p>
+                    )}
+                </Botao>
         </Container>
     );
 }
@@ -92,5 +115,19 @@ const ProductInfo = styled.div`
         color: #000000;
 
         margin: 3px 0;
+    }
+`;
+
+const Botao = styled.button`
+    width: 100%;
+    height: 46px;
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p{
+        font-size: 20px;
+        color: #FFFFFF;
     }
 `;

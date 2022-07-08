@@ -10,6 +10,7 @@ export default function Product({ image, name, description, price }){
                 <h4>{description}</h4>
                 <h5>R${price}</h5>
             </Info>
+            
         </Container>
     )
 }
