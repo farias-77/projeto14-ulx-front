@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Product from "./Product.js";
 
@@ -6,7 +7,7 @@ import { AuthContext } from "../../providers/Auth.js";
 
 export default function Home() {
     const { user, setUser } = useContext(AuthContext);
-
+    const productId = 1;
     useEffect(() => {
         setUser({
             ...user,
@@ -19,117 +20,149 @@ export default function Home() {
             <Category>
                 <h1>Casa </h1>
                 <Products>
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
                 </Products>
             </Category>
             <Category>
                 <h1>Esporte e lazer </h1>
                 <Products>
+                <Link to={`/product/${productId}`}>
                     <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
+                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                        name="Gabriel Barbosa"
+                        description="O melhor atacante do brasil hoje tem gol do gabigol"
+                        price="90M"
                     />
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
                 </Products>
             </Category>
             <Category>
                 <h1>Eletrônicos e celulares: </h1>
                 <Products>
+                <Link to={`/product/${productId}`}>
                     <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
+                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                        name="Gabriel Barbosa"
+                        description="O melhor atacante do brasil hoje tem gol do gabigol"
+                        price="90M"
                     />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
                 </Products>
             </Category>
             <Category>
                 <h1>Moda e beleza</h1>
                 <Products>
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
+                    <Link to={`/product/${productId}`}>
+                        <Product
+                            image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
+                            name="Gabriel Barbosa"
+                            description="O melhor atacante do brasil hoje tem gol do gabigol"
+                            price="90M"
+                        />
+                    </Link>
                 </Products>
             </Category>
         </Container>
