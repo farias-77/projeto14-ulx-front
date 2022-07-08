@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import logo from "../../assets/logo.png";
 
-export default function Header(){
+import logo from "../../assets/image/logo.png";
+
+export default function Header() {
     return (
         <Container>
             <Logo>
@@ -9,13 +10,13 @@ export default function Header(){
                 <p>O seu marketplace de confiança</p>
             </Logo>
             <Icons>
-                <ion-icon name="home"></ion-icon>
-                <ion-icon name="storefront"></ion-icon>
-                <ion-icon name="cart"></ion-icon>
-                <ion-icon name="person"></ion-icon>
+                <ion-icon name="home" />
+                <ion-icon name="storefront" />
+                <ion-icon name="cart" />
+                <ion-icon name="person" />
             </Icons>
         </Container>
-    )
+    );
 }
 
 const Container = styled.div`
@@ -25,8 +26,8 @@ const Container = styled.div`
     left: 0;
     z-index: 1;
 
-    background-color: #6E0AD6;
-`;  
+    background-color: #6e0ad6;
+`;
 
 const Logo = styled.div`
     height: 100px;
@@ -39,19 +40,19 @@ const Logo = styled.div`
     justify-content: center;
     padding-left: 15px;
 
-    img{
+    img {
         width: 70px;
         margin-bottom: 5px;
     }
 
-    p{
-        font-family: 'Roboto';
+    p {
+        font-family: "Roboto";
         font-style: normal;
         font-weight: 700;
         font-size: 18px;
         line-height: 21px;
         color: #000000;
-        margin-left: 6px
+        margin-left: 6px;
     }
 `;
 
@@ -63,7 +64,7 @@ const Icons = styled.div`
     justify-content: space-around;
     align-items: center;
 
-    ion-icon{
+    ion-icon {
         font-size: 30px;
         color: white;
     }

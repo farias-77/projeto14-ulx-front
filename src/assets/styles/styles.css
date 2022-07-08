@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+
+    --cor-fundo-tela: #EEEEEE;
+    --cor-verde: #32B72F;
+    --cor-roxo: #6E0AD6;
+    --cor-O: #6E0AD6;
+    --cor-L: #8CE563;
+    --cor-X: #F28000;
+
+    --cor-descricao: #A6A6A6;
+    --cor-botao-fecha-pedido: #CBCBCB;
+
+    --display-none: none;
+    --display-flex: flex;
+    --display-block: block;
+}
+
+.cresce {
+    width: 60px;
+    height: 60px;
+}
