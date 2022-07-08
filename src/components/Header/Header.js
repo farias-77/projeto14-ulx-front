@@ -22,7 +22,7 @@ export default function Header({ entrou }) {
                 <img src={logo} alt="logo" />
                 <p>O seu marketplace de confiança</p>
             </Logo>
-            <Saida>
+            <Saida aparece={user.token !== ""}>
                 <ion-icon
                     name="exit-outline"
                     style={{
@@ -105,4 +105,6 @@ const Saida = styled.div`
     position: fixed;
     right: 24px;
     top: 24px;
+    display: ${(props) =>
+        props.aparece ? "var(--display-initial)" : "var(--display-none)"};
 `;
