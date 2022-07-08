@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import { AuthContext } from "../../providers/Auth.js";
 import Inputs from "./Inputs.js";
 
 function TelaSignIn() {
+    const { user, setUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        setUser({
+            ...user,
+            entrou: false,
+        });
+    }, []);
+
     return (
         <SignIn>
             <Logotipo>
