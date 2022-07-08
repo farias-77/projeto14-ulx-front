@@ -21,8 +21,9 @@
 }
 
 body {
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-style: normal;
+    background-color: #eeeeee;
     width: 100vw;
     height: 100vh;
     background-color: var(--cor-fundo-tela);
