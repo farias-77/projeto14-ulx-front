@@ -69,7 +69,7 @@ const Container = styled.div`
 
 const ProductInfo = styled.div`
     width: 100%;
-
+    
     margin-top: 30px;
 
     h2 {
