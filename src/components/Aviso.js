@@ -7,11 +7,13 @@ import { AuthContext } from "../providers/Auth.js";
 function Aviso({ mensagem, sim, nao, ok }) {
     const { user } = React.useContext(AuthContext);
 
+    const name = user?.name;
+
     return (
         <ContainerAviso>
             <BoxAviso>
                 <h2>
-                    {user.name}.<br />
+                    {name}.<br />
                     {mensagem}
                 </h2>
                 {ok ? (
@@ -63,7 +65,7 @@ const ContainerAviso = styled.div`
 const BoxAviso = styled.div`
     width: 350px;
     height: 300px;
-    background-color: var(--cor-branco);
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     padding: 30px 36px;
