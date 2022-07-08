@@ -15,7 +15,9 @@ export default function Cart(){
                 )
             })}
            </Div>
+           <Container2>
            <Button >Finalizar pedido</Button>
+           </Container2>
            <h1>Seu histórico de compras </h1>
            <Div>
            {n.map((ns)=>{
@@ -31,11 +33,21 @@ export default function Cart(){
     )
 
 }
+const Container2 = styled.div`
+   width: 100%;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+
+`;
 const Button = styled.button`
-    height: 30px;
-    width: 110px;
-    margin-left:200px;
-background:#A328D6;
+    height: 50px;
+    width: 120px;
+   
+    margin-top:10px;
+    margin-bottom:10px;
+    background:rgb(110, 10, 214);
+    border-radius:4px;
 
 `;
 const Container = styled.div`

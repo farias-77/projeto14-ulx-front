@@ -1,0 +1,23 @@
+.deletar{
+    width: 150px;
+    height:125px;
+    background:#A328D6;
+    display: none;
+    position: absolute;
+    right: 109px;
+    bottom: 0px;
+
+}
+.deletar2{
+    width: 150px;
+    height:125px;
+    background: rgb(238, 238, 238);
+    display: block;
+    position: absolute;
+    right: 109px;
+    bottom: 0px;
+    border: 5px solid red;
+    border-radius: 10px;
+    
+
+}

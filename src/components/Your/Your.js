@@ -42,7 +42,6 @@ const Container = styled.div`
 `;
 const Div = styled.div`
 height: 500px;
-width: 336px;
-
+width: 100%;
 overflow-Y: scroll;
 `;

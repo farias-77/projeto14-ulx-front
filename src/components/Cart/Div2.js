@@ -26,7 +26,7 @@ margin-left: 15px;
 display: flex;
 background: white;
 margin-bottom: 15px;
-dispaly:flex;
+
 
 img{
     object-fit: cover;
