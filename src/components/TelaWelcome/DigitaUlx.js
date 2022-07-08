@@ -4,8 +4,8 @@ import { Bars } from "react-loader-spinner";
 import styled from "styled-components";
 
 function DigitaUlx() {
-    const texto1 = "Olx";
-    const texto2 = "Ulx";
+    const texto1 = "OLX";
+    const texto2 = "ULX";
 
     const [text, setText] = useState("");
     const [mostraBars, setMostraBars] = useState(false);
@@ -47,9 +47,15 @@ function DigitaUlx() {
     return (
         <Container>
             <BoxLetras>
-                <h1 style={{ color: "var(--cor-O)" }}>{text[0]}</h1>
-                <h1 style={{ color: "var(--cor-L)" }}>{text[1]}</h1>
-                <h1 style={{ color: "var(--cor-X)" }}>{text[2]}</h1>
+                <div className="marca" style={{ color: "var(--cor-O)" }}>
+                    {text[0]}
+                </div>
+                <div className="marca" style={{ color: "var(--cor-L)" }}>
+                    {text[1]}
+                </div>
+                <div className="marca" style={{ color: "var(--cor-X)" }}>
+                    {text[2]}
+                </div>
                 <TypedText display={mostraBars} />
             </BoxLetras>
             <BoxBarra>

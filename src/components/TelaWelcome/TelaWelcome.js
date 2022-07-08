@@ -19,14 +19,6 @@ const ContainerWelcome = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    h1 {
-        font-family: "Righteous";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 80px;
-        line-height: 99px;
-    }
 `;
 
 export default TelaWelcome;
