@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import React from "react";
 
 import DigitaUlx from "./DigitaUlx.js";
 
 function TelaWelcome() {
+    const navigate = useNavigate();
+
+    // Substituir por uma promise com os produtos depois
+    setTimeout(() => navigate("/home"), 4000);
+
     return (
         <ContainerWelcome>
             <DigitaUlx />
