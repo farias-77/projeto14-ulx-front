@@ -38,7 +38,10 @@ export default function Header({ entrou }) {
                 <ion-icon name="home" />
                 <ion-icon name="storefront" />
                 <ion-icon name="cart" />
-                <Link to="/sign-in">
+                <Link
+                    to="/sign-in"
+                    className={user.token !== "" ? "disabled-link" : undefined}
+                >
                     <ion-icon name="person" />
                 </Link>
             </Icons>
