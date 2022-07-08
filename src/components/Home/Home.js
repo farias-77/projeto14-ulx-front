@@ -17,7 +17,7 @@ export default function Home() {
     return (
         <Container>
             <Category>
-                <h1>Jogadores: </h1>
+                <h1>Casa </h1>
                 <Products>
                     <Product
                         image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
@@ -46,7 +46,7 @@ export default function Home() {
                 </Products>
             </Category>
             <Category>
-                <h1>Times: </h1>
+                <h1>Esporte e lazer </h1>
                 <Products>
                     <Product
                         image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
@@ -75,7 +75,36 @@ export default function Home() {
                 </Products>
             </Category>
             <Category>
-                <h1>Estádios: </h1>
+                <h1>Eletrônicos e celulares: </h1>
+                <Products>
+                    <Product
+                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
+                        name="Maracanã"
+                        description="gigante esse é gigante"
+                        price=""
+                    />
+                    <Product
+                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
+                        name="Maracanã"
+                        description="gigante esse é gigante"
+                        price=""
+                    />
+                    <Product
+                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
+                        name="Maracanã"
+                        description="gigante esse é gigante"
+                        price=""
+                    />
+                    <Product
+                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
+                        name="Maracanã"
+                        description="gigante esse é gigante"
+                        price=""
+                    />
+                </Products>
+            </Category>
+            <Category>
+                <h1>Moda e beleza</h1>
                 <Products>
                     <Product
                         image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
