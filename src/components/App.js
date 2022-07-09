@@ -23,7 +23,7 @@ export default function App() {
                 <Route path="/sign-up" element={<TelaSignUp />} />
                 <Route path="/espera" element={<h1>Oi</h1>} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/product/:productId" element={<ProductPage />} />
+                <Route path="/product" element={<ProductPage />} />
             </Routes>
         </BrowserRouter>
     );

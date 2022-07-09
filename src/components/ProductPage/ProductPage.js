@@ -36,7 +36,7 @@ export default function ProductPage() {
     
     function addCart(){
         
-        //lógica para add ao carrinho 
+        // lógica para add ao carrinho 
         
         setCarregando(true);
         setTimeout(() => {setCarregando(false)}, 4000);
