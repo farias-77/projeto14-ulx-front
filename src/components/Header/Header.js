@@ -38,7 +38,7 @@ export default function Header({ entrou }) {
                 <Link to="/home"> <ion-icon name="home" /> </Link>
                 
                 {/* adicionar link */}
-                <ion-icon name="storefront" /> 
+                <ion-icon name="add-circle" /> 
                 <ion-icon name="cart" />
 
                 <Link

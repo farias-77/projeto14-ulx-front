@@ -48,9 +48,7 @@ export default function Home() {
                                    price={product.price} 
                                    key={uuid()} /> 
                         </Link>)
-                        
                         :
-
                         "Nenhum produto disponível nesta categoria"
                     }                    
                     
@@ -70,9 +68,7 @@ export default function Home() {
                                     price={product.price} 
                                     key={uuid()} /> 
                         </Link>)
-
                         :
-
                         "Nenhum produto disponível nesta categoria"
                     }
                     
@@ -92,9 +88,7 @@ export default function Home() {
                                 price={product.price} 
                                 key={uuid()} /> 
                     </Link>)
-
                     :
-
                     "Nenhum produto disponível nesta categoria"
                 }
 
@@ -114,12 +108,9 @@ export default function Home() {
                                 price={product.price} 
                                 key={uuid()} /> 
                     </Link>)
-
                     :
-
                     "Nenhum produto disponível nesta categoria"
                 }
-
                 </Products>
             </Category>
         </Container>
