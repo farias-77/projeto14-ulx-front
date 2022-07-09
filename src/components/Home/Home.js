@@ -1,11 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import Product from "./Product.js";
-
 import { AuthContext } from "../../providers/Auth.js";
 
 export default function Home() {
     const { user, setUser } = useContext(AuthContext);
+    const [ products, setProducts ] = useState([]);
 
     useEffect(() => {
         setUser({
@@ -14,93 +17,100 @@ export default function Home() {
         });
     }, []);
 
+    useEffect(() => {
+
+        // alterar url quando resolver heroku
+        const URL = "http://localhost:5000/products"; 
+        const promise = axios.get(URL);
+
+        promise.then((response) => {
+            setProducts([... response.data])
+        })
+
+        promise.catch(() => {
+        });
+
+    }, []);
+
     return (
         <Container>
             <Category>
-                <h1>Jogadores: </h1>
+                <h1>Casa </h1>
                 <Products>
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
-                    <Product
-                        image="https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg"
-                        name="Gabriel Barbosa"
-                        description="O melhor atacante do brasil hoje tem gol do gabigol"
-                        price="90M"
-                    />
+                    
+                    {products.length > 0 ? 
+
+                        products.filter(product => product.category === "Casa").map((product) => 
+                        <Link to="/product"> 
+                        <Product   image={product.image} 
+                                   name={product.name} 
+                                   description={product.description} 
+                                   price={product.price} 
+                                   key={uuid()} /> 
+                        </Link>)
+                        :
+                        "Nenhum produto disponível nesta categoria"
+                    }                    
+                    
                 </Products>
             </Category>
             <Category>
-                <h1>Times: </h1>
+                <h1>Esporte e lazer </h1>
                 <Products>
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
-                    <Product
-                        image="https://play-lh.googleusercontent.com/9EuLX3VSldq04CPSZ2s6aL-SG1VDTFCtLg9ng3d2bhJofpaN4mZmEQqsqdrmah92r90"
-                        name="Flamengo"
-                        description="O melhor time do brasil hoje tem gol do gabigol"
-                        price=""
-                    />
+                
+                    {products.length > 0 ? 
+
+                        products.filter(product => product.category === "Esporte e lazer").map((product) => 
+                        <Link to="/product"> 
+                        <Product    image={product.url} 
+                                    name={product.name} 
+                                    description={product.description} 
+                                    price={product.price} 
+                                    key={uuid()} /> 
+                        </Link>)
+                        :
+                        "Nenhum produto disponível nesta categoria"
+                    }
+                    
                 </Products>
             </Category>
             <Category>
-                <h1>Estádios: </h1>
+                <h1>Eletrônicos e celulares </h1>
                 <Products>
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
-                    <Product
-                        image="https://flamengorj.com.br/arquivos/noticia/9f936923-468a-4128-832a-615636170f43_conteudo.jpg"
-                        name="Maracanã"
-                        description="gigante esse é gigante"
-                        price=""
-                    />
+                
+                {products.length > 0 ? 
+
+                    products.filter(product => product.category === "Eletrônicos e celulares").map((product) => 
+                    <Link to="/product"> 
+                    <Product    image={product.url} 
+                                name={product.name} 
+                                description={product.description} 
+                                price={product.price} 
+                                key={uuid()} /> 
+                    </Link>)
+                    :
+                    "Nenhum produto disponível nesta categoria"
+                }
+
+                </Products>
+            </Category>
+            <Category>
+                <h1>Moda e beleza</h1>
+                <Products>
+                    
+                {products.length > 0 ? 
+
+                    products.filter(product => product.category === "Moda e beleza").map((product) => 
+                    <Link to="/product"> 
+                    <Product    image={product.url} 
+                                name={product.name} 
+                                description={product.description} 
+                                price={product.price} 
+                                key={uuid()} /> 
+                    </Link>)
+                    :
+                    "Nenhum produto disponível nesta categoria"
+                }
                 </Products>
             </Category>
         </Container>

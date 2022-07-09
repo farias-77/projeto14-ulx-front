@@ -103,3 +103,7 @@ button:hover {
 .disabled-link {
     pointer-events: none;
 }
+
+a{
+    text-decoration: none;
+}
