@@ -13,13 +13,15 @@ export default function ProductPage() {
 
     useEffect(() => {
 
-         const URL = `localhost:5000/product/${productId}`;
+         const URL = `localhost:5000/products/${productId}`;
          const promise = axios.get(URL);
         //atualizar com dados do db
          promise.then((response) => {
              setProduct({...response.data}); 
+         });
+         promise.catch(() => {
+             console.log('deu ruim');
          })
-        setProduct({...product});
     }, []);
     
     function addCart(){
@@ -39,7 +41,7 @@ export default function ProductPage() {
             />
             <ProductInfo>
                 <h2>{ product.name ? product.name : "loading..." }</h2>
-                <h4>{ product.price ? product.price : "loading..." }</h4>
+                <h4>{ product.price ? `R$${product.price}` : "loading..." }</h4>
                 <h3>{ product.description ? product.description : "loading..."}</h3>
             </ProductInfo>
             <Botao onClick={() => addCart() }>

@@ -43,7 +43,7 @@ export default function Home() {
                     {products.length > 0 ? 
 
                         products.filter(product => product.category === "Casa").map((product) => 
-                        <Link to={`/product/${product._id}`} > 
+                        <Link to={`/products/${product._id}`} > 
                         <Product   image={product.image} 
                                    name={product.name} 
                                    description={product.description} 
@@ -63,7 +63,7 @@ export default function Home() {
                     {products.length > 0 ? 
 
                         products.filter(product => product.category === "Esporte e lazer").map((product) => 
-                        <Link to={`/product/${product._id}`} > 
+                        <Link to={`/products/${product._id}`} > 
                         <Product    image={product.url} 
                                     name={product.name} 
                                     description={product.description} 
@@ -83,7 +83,7 @@ export default function Home() {
                 {products.length > 0 ? 
 
                     products.filter(product => product.category === "Eletrônicos e celulares").map((product) => 
-                    <Link to={`/product/${product._id}`} > 
+                    <Link to={`/products/${product._id}`} > 
                     <Product    image={product.url} 
                                 name={product.name} 
                                 description={product.description} 
@@ -103,7 +103,7 @@ export default function Home() {
                 {products.length > 0 ? 
 
                     products.filter(product => product.category === "Moda e beleza").map((product) => 
-                    <Link to={`/product/${product._id}`} > 
+                    <Link to={`/products/${product._id}`} > 
                     <Product    image={product.url} 
                                 name={product.name} 
                                 description={product.description} 
