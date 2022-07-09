@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Bars } from "react-loader-spinner";
+import axios from "axios";
 
 export default function ProductPage() {
     
-    const productId = useParams();
+    const { productId } = useParams();
 
     // inicializar vazio para preencher com dados do db
     const [ product, setProduct ] = useState({});
@@ -13,15 +14,13 @@ export default function ProductPage() {
 
     useEffect(() => {
 
-         const URL = `localhost:5000/products/${productId}`;
+         const URL = `http://localhost:5000/products/${productId}`;
          const promise = axios.get(URL);
-        //atualizar com dados do db
+
+        //  atualizar com dados do bd
          promise.then((response) => {
-             setProduct({...response.data}); 
-         });
-         promise.catch(() => {
-             console.log('deu ruim');
-         })
+             setProduct({...response.data});
+            });
     }, []);
     
     function addCart(){
@@ -32,7 +31,7 @@ export default function ProductPage() {
         setTimeout(() => {setCarregando(false)}, 4000);
     }
 
-
+    // trocar loading por spinner
     return (
         <Container>
             <img
@@ -43,6 +42,7 @@ export default function ProductPage() {
                 <h2>{ product.name ? product.name : "loading..." }</h2>
                 <h4>{ product.price ? `R$${product.price}` : "loading..." }</h4>
                 <h3>{ product.description ? product.description : "loading..."}</h3>
+                <h3>{ product.category ? `Categoria: ${product.category}` : "loading..." }</h3>
             </ProductInfo>
             <Botao onClick={() => addCart() }>
                     {carregando ? (
@@ -104,7 +104,7 @@ const ProductInfo = styled.div`
         line-height: 18px;
         color: #000000;
 
-        margin: 3px 0;
+        margin: 10px 0;
     }
 `;
 
