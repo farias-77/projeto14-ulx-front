@@ -1,32 +1,81 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../../assets/logo.png";
+import { useContext } from "react";
 
-export default function Header(){
+import { AuthContext } from "../../providers/Auth.js";
+import logo from "../../assets/image/logo.png";
+
+export default function Header({ entrou }) {
+    const navigate = useNavigate();
+
+    const { user, setUser } = useContext(AuthContext);
+
+    function reiniciaPag() {
+        window.location.reload();
+    }
+
+    function Sair() {
+        setUser({ ...user, name: "", email: "", token: "", entrou: false });
+        localStorage.removeItem("usuario");
+        navigate("/");
+    }
+
     return (
-        <Container>
+        <Container entrou={entrou}>
             <Logo>
-                <img src={logo} alt="logo" />
+                <img
+                    src={logo}
+                    alt="logo"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => reiniciaPag()}
+                    onKeyDown={() => reiniciaPag()}
+                />
                 <p>O seu marketplace de confiança</p>
             </Logo>
+            <Saida aparece={user.token !== ""}>
+                <ion-icon
+                    name="exit-outline"
+                    style={{
+                        width: "28px",
+                        height: "28px",
+                        color: "black",
+                        cursor: "pointer",
+                    }}
+                    onClick={() => Sair()}
+                />
+            </Saida>
             <Icons>
-                <ion-icon name="home"></ion-icon>
-                <ion-icon name="storefront"></ion-icon>
-                <ion-icon name="cart"></ion-icon>
-                <ion-icon name="person"></ion-icon>
+                <Link to="/home">
+                    {" "}
+                    <ion-icon name="home" />{" "}
+                </Link>
+
+                {/* adicionar link */}
+                <ion-icon name="add-circle" />
+                <ion-icon name="cart" />
+
+                <Link
+                    to="/sign-in"
+                    className={user.token !== "" ? "disabled-link" : undefined}
+                >
+                    <ion-icon name="person" />
+                </Link>
             </Icons>
         </Container>
-    )
+    );
 }
 
 const Container = styled.div`
+    display: ${(props) => (props.entrou ? "initial" : "var(--display-none)")};
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
 
-    background-color: #6E0AD6;
-`;  
+    background-color: #6e0ad6;
+`;
 
 const Logo = styled.div`
     height: 100px;
@@ -39,19 +88,19 @@ const Logo = styled.div`
     justify-content: center;
     padding-left: 15px;
 
-    img{
+    img {
         width: 70px;
         margin-bottom: 5px;
     }
 
-    p{
-        font-family: 'Roboto';
+    p {
+        font-family: "Roboto";
         font-style: normal;
         font-weight: 700;
         font-size: 18px;
         line-height: 21px;
         color: #000000;
-        margin-left: 6px
+        margin-left: 6px;
     }
 `;
 
@@ -63,8 +112,16 @@ const Icons = styled.div`
     justify-content: space-around;
     align-items: center;
 
-    ion-icon{
+    ion-icon {
         font-size: 30px;
         color: white;
     }
+`;
+
+const Saida = styled.div`
+    position: fixed;
+    right: 24px;
+    top: 24px;
+    display: ${(props) =>
+        props.aparece ? "var(--display-initial)" : "var(--display-none)"};
 `;

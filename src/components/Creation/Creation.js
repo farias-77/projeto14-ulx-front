@@ -1,18 +1,21 @@
 import styled from "styled-components";
 import { useState } from "react";
 import "./botao.css";
-export default function Creation(){
+import axios from "axios";
+export default function Creation(props){
+    const {email}= props
+    console.log(email)
     const [url,setUrl]=useState('')
     const [nome,setNome]=useState('')
     const [descricao,setDescricao]=useState('')
-    const [preco,setPreco]=useState('')
+    const [preco,setPreco]=useState(0)
     const [botao1,setBotao1]=useState('botao')
     const [botao2,setBotao2]=useState('botao2')
     const [botao3,setBotao3]=useState('botao2')
     const [botao4,setBotao4]=useState('botao2')
-    let categoria ='categoria1'
+    const [categoria,setCategoria]=useState('casa')
     function Botao1(b,a){
-        categoria=a
+        setCategoria(a)
         if(b =='botao2'){
             setBotao1('botao')
             setBotao2('botao2')
@@ -21,7 +24,7 @@ export default function Creation(){
         }       
     }
     function Botao2(b,a){
-        categoria=a
+        setCategoria(a)
         if(b =='botao2'){
             setBotao2('botao')
             setBotao1('botao2')
@@ -30,7 +33,7 @@ export default function Creation(){
         }       
     }
     function Botao3(b,a){
-        categoria=a
+        setCategoria(a)
         if(b =='botao2'){
             setBotao3('botao')
             setBotao2('botao2')
@@ -39,7 +42,7 @@ export default function Creation(){
         }       
     }
     function Botao4(b,a){
-        categoria=a
+        setCategoria(a)
         if(b =='botao2'){
             setBotao4('botao')
             setBotao2('botao2')
@@ -47,6 +50,16 @@ export default function Creation(){
             setBotao1('botao2')
         }       
     }
+    function end(e){
+        e.preventDefault();
+        const promise = axios.post("http://localhost:5000/creation", {
+            email,url,name:nome,description:descricao,category:categoria,price:preco
+        });
+        promise.then((response) => {
+            
+            alert(response.data)
+        });
+      }
     return (
         <Container> 
             <h1>Venda seus produtos aqui: </h1>
@@ -61,7 +74,7 @@ export default function Creation(){
              <input type={'text'} value={descricao} placeholder='Descrição do produto' onChange={(e) => setDescricao(e.target.value)} className="input"></input>
              <input type={'number'} value={preco} placeholder='Preço' onChange={(e) => setPreco(e.target.value)} className="input"></input>
             
-             <button  className="input1" type="subimit" >Cadastrar</button>
+             <button  className="input1" type="subimit" onClick={end}>Cadastrar</button>
              </Form> 
              
         </Container>
