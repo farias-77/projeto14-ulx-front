@@ -56,7 +56,7 @@ function DigitaUlx() {
                 <div className="marca" style={{ color: "var(--cor-X)" }}>
                     {text[2]}
                 </div>
-                <TypedText display={mostraBars} />
+                <TypedText tela={mostraBars} />
             </BoxLetras>
             <BoxBarra>
                 <Bars
@@ -102,7 +102,7 @@ const TypedText = styled.div`
     height: 75px;
     color: #000;
     display: ${(props) =>
-        props.display ? "var(--display-none)" : "var(--display-block)"};
+        props.tela ? "var(--display-none)" : "var(--display-block)"};
 
     @keyframes blinkTextCursor {
         from {
