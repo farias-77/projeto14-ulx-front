@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";
@@ -10,6 +11,10 @@ export default function Header({ entrou }) {
 
     const { user, setUser } = useContext(AuthContext);
 
+    function reiniciaPag() {
+        window.location.reload();
+    }
+
     function Sair() {
         setUser({ ...user, name: "", email: "", token: "", entrou: false });
         localStorage.removeItem("usuario");
@@ -19,7 +24,13 @@ export default function Header({ entrou }) {
     return (
         <Container entrou={entrou}>
             <Logo>
-                <img src={logo} alt="logo" />
+                <img
+                    src={logo}
+                    alt="logo"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => reiniciaPag()}
+                    onKeyDown={() => reiniciaPag()}
+                />
                 <p>O seu marketplace de confiança</p>
             </Logo>
             <Saida aparece={user.token !== ""}>
@@ -35,10 +46,13 @@ export default function Header({ entrou }) {
                 />
             </Saida>
             <Icons>
-                <Link to="/home"> <ion-icon name="home" /> </Link>
-                
+                <Link to="/home">
+                    {" "}
+                    <ion-icon name="home" />{" "}
+                </Link>
+
                 {/* adicionar link */}
-                <ion-icon name="add-circle" /> 
+                <ion-icon name="add-circle" />
                 <ion-icon name="cart" />
 
                 <Link
