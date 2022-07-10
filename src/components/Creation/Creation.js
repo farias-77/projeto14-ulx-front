@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import "./botao.css";
 import axios from "axios";
+
 export default function Creation(props){
     const {email}= props
     console.log(email)

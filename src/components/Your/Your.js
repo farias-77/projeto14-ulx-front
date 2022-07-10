@@ -1,15 +1,31 @@
 import styled from "styled-components";
 import Divv from "./Div.js";
-export default function your(){
+import axios from "axios";
+import { useState } from "react";
+export default function Your(props){
+    const {email}= props
     const n=[1,2,3,4,5]
+    const [caixa,setCaixa]=useState([])
+    
+    function ab(){
+    const promise = axios.post("http://localhost:5000/cart",  {
+        email
+    });
+    promise.then((response) => {
+        console.log('oi')
+        console.log(response.data)
+        setCaixa([...response.data])
+    });
+}
     return (
         <Container> 
+            <button className="visualizar" onClick={ab} >Visualize seus produtos</button>
             <h1>Seus produtos: </h1>
            <Div>
-           {n.map((ns)=>{
+           {caixa.map((ns)=>{
             return(
                 <>
-                    <Divv></Divv>
+                    <Divv emai={email} url={ns.url} name={ns.name} description={ns.description} category={ns.category} price={ns.price} id={ns._id}></Divv>
                 </>
                 )
             })}

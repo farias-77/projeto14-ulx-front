@@ -26,7 +26,7 @@ export default function App() {
                 
                 <Route path="/cart" element={<Cart email={email} />} />
                 <Route path="/creation" element={<Creation email={email}/>} />
-                <Route path="/your" element={<Your />} />
+                <Route path="/your" element={<Your email={email}/>} />
                
                 <Route path="/" element={<TelaWelcome />} />
                 <Route path="/sign-in" element={<TelaSignIn />} />

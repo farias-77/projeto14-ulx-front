@@ -1,14 +1,18 @@
 import styled from "styled-components";
-export default function Divv(){
+
+export default function Divv(props){
+    const {email,url,name,description,category,price} =props
     return(
 
         <Item>
             
-            <img src='https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg' alt='imagem produto' />
+            
+            <img src={url} alt='imagem produto' />
+    
             <Caixa>
-                <h3>Gabriel Barbosa</h3>
-                <h4>O melhor atacante do brasil hoje tem gol do gabigol</h4>
-                <h5>R$ 90M</h5>
+                <h3>{name}</h3>
+                <h4>{description}</h4>
+                <h5>R$ {price}</h5>
             </Caixa>
          
            
