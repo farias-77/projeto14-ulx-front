@@ -18,6 +18,9 @@
     bottom: 0px;
     border: 5px solid red;
     border-radius: 10px;
-    
-
+}
+.visualizar{
+    width: 100px;
+    height:40px;
+    margin-top: 10px;
 }

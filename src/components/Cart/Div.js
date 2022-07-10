@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import "./deletar.css";
 import { useState } from "react";
-export default function Divv(){
+import axios from "axios";
+
+export default function Divv(props){
+    const {ab,email,url,name,description,category,price,id} =props
+  
     const [chave,setChave]=useState('deletar')
    
     function deletar(){
@@ -12,15 +16,32 @@ export default function Divv(){
         }
 
     }
+    
+ 
+   
+
+    function ac(){
+        const promise = axios.post("http://localhost:5000/cartdelete",  {
+            id
+        });
+        promise.then((response) => {
+            console.log('oi')
+          
+            document.location.reload(true);
+        });
+    }
+    
     return(
 
 <Item>
     <Div>
-    <img src='https://vejario.abril.com.br/wp-content/uploads/2021/09/gabi-gol-globo.jpg.jpg' alt='imagem produto' />
+        
+    <img src={url} alt='imagem produto' />
+    
     <Caixa>
-        <h3>Gabriel Barbosa</h3>
-        <h4>O melhor atacante do brasil hoje tem gol do gabigol</h4>
-        <h5>R$ 90M</h5>
+        <h3>{name}</h3>
+        <h4>{description}</h4>
+        <h5>R$ {price}</h5>
     </Caixa>
     </Div>
     <button onClick={deletar}>Excluir</button>
@@ -28,7 +49,7 @@ export default function Divv(){
   <div className={chave}>Excluir do carrinho?
   <Div>
   <Sim>
-    <p>SIM</p>
+    <p onClick={ac}>SIM</p>
   </Sim>
   <Nao onClick={deletar}>
     <p>NÃO</p>

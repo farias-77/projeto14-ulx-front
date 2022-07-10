@@ -1,16 +1,47 @@
 import styled from "styled-components";
 import Divv from "./Div.js";
 import Div2 from "./Div2.js";
-export default function Cart(){
+import axios from "axios";
+import { useState } from "react";
+
+export default function Cart(props){
+    const {email}= props
     const n=[1,2,3,4,5]
+   
+    const [caixa,setCaixa]=useState([])
+    const [caixa2,setCaixa2]=useState([])
+    function ab(){
+    const promise = axios.post("http://localhost:5000/cart",  {
+        email
+    });
+    promise.then((response) => {
+        console.log('oi')
+        console.log(response.data)
+        setCaixa([...response.data])
+    });
+}
+function ac(){
+    const promise = axios.post("http://localhost:5000/historic",  {
+        email
+    });
+    promise.then((response) => {
+        console.log('oi')
+        console.log(response.data)
+        setCaixa2([...response.data])
+    });
+}
+
+
+
     return (
         <Container> 
-            <h1>Seu carrinho: </h1>
+            <button className="visualizar" onClick={ab} >Visualize seu carrinho</button>
+            <h1 >Seu carrinho: </h1>
            <Div>
-           {n.map((ns)=>{
+           {caixa.map((ns)=>{
             return(
                 <>
-                    <Divv></Divv>
+                    <Divv  emai={email} url={ns.url} name={ns.name} description={ns.description} category={ns.category} price={ns.price} id={ns._id}></Divv>
                 </>
                 )
             })}
@@ -18,12 +49,13 @@ export default function Cart(){
            <Container2>
            <Button >Finalizar pedido</Button>
            </Container2>
+           <button className="visualizar" onClick={ac} >Visualize seu histórico</button>
            <h1>Seu histórico de compras </h1>
            <Div>
-           {n.map((ns)=>{
+           {caixa2.map((ns)=>{
             return(
                 <>
-                    <Div2></Div2>
+                    <Div2 emai={email} url={ns.url} name={ns.name} description={ns.description} category={ns.category} price={ns.price} id={ns._id}></Div2>
                 </>
                 )
             })}

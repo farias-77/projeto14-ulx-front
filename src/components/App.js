@@ -24,7 +24,7 @@ export default function App() {
             <Header entrou={entrou} />
             <Routes>
                 
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/cart" element={<Cart email={email} />} />
                 <Route path="/creation" element={<Creation email={email}/>} />
                 <Route path="/your" element={<Your />} />
                
