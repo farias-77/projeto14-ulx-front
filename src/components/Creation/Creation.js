@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { useState } from "react";
 import "./botao.css";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Creation(props){
+    const navigate = useNavigate();
     const {email}= props
     console.log(email)
     const [url,setUrl]=useState('')
@@ -59,6 +61,7 @@ export default function Creation(props){
         promise.then((response) => {
             
             alert(response.data)
+            navigate("/your");
         });
       }
     return (
