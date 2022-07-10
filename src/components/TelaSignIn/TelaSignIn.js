@@ -1,11 +1,14 @@
+import { ArrowLeftShort } from "react-bootstrap-icons";
 import React, { useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../providers/Auth.js";
 import Inputs from "./Inputs.js";
 
 function TelaSignIn() {
+    const navigate = useNavigate();
+
     const { user, setUser } = useContext(AuthContext);
 
     useEffect(() => {
@@ -17,6 +20,14 @@ function TelaSignIn() {
 
     return (
         <SignIn>
+            <Setinha>
+                <ArrowLeftShort
+                    size={30}
+                    color="#333333"
+                    cursor="pointer"
+                    onClick={() => navigate("/home")}
+                />
+            </Setinha>
             <Logotipo>
                 <div className="marca" style={{ color: "var(--cor-O)" }}>
                     U
@@ -35,6 +46,12 @@ function TelaSignIn() {
         </SignIn>
     );
 }
+
+const Setinha = styled.div`
+    position: fixed;
+    left: 16px;
+    top: 50px;
+`;
 
 const SignIn = styled.div`
     width: 100vw;

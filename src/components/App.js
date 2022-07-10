@@ -8,6 +8,7 @@ import TelaSignIn from "./TelaSignIn/TelaSignIn.js";
 import TelaSignUp from "./TelaSignUp/TelaSignUp.js";
 import TelaWelcome from "./TelaWelcome/TelaWelcome.js";
 import ProductPage from "./ProductPage/ProductPage.js";
+import TelaConfirmacao from "./TelaConfirmacao/TelaConfirmacao.js";
 
 export default function App() {
     const { user } = React.useContext(AuthContext);
@@ -21,9 +22,10 @@ export default function App() {
                 <Route path="/" element={<TelaWelcome />} />
                 <Route path="/sign-in" element={<TelaSignIn />} />
                 <Route path="/sign-up" element={<TelaSignUp />} />
-                <Route path="/espera" element={<h1>Oi</h1>} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/products/:productId" element={<ProductPage />} />
+                <Route path="/confirmacao" element={<TelaConfirmacao />} />
+                <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
         </BrowserRouter>
     );

@@ -22,20 +22,21 @@ export default function ProductPage() {
              setProduct({...response.data});
             });
     }, []);
-    
-    function addCart(){
-        
-        // lógica para add ao carrinho 
-        
+
+    function addCart() {
+        // lógica para add ao carrinho
+
         setCarregando(true);
-        setTimeout(() => {setCarregando(false)}, 4000);
+        setTimeout(() => {
+            setCarregando(false);
+        }, 4000);
     }
 
     // trocar loading por spinner
     return (
         <Container>
             <img
-                src={ product.url ? product.url : "loading..." }
+                src={product.url ? product.url : "loading..."}
                 alt="imagem produto"
             />
             <ProductInfo>
@@ -44,18 +45,18 @@ export default function ProductPage() {
                 <h3>{ product.description ? product.description : "loading..."}</h3>
                 <h3>{ product.category ? `Categoria: ${product.category}` : "loading..." }</h3>
             </ProductInfo>
-            <Botao onClick={() => addCart() }>
-                    {carregando ? (
-                        <Bars
-                            height="40"
-                            width="40"
-                            color="white"
-                            ariaLabel="loading"
-                        />
-                    ) : (
-                        <p>Adicionar ao carrinho</p>
-                    )}
-                </Botao>
+            <Botao onClick={() => addCart()}>
+                {carregando ? (
+                    <Bars
+                        height="40"
+                        width="40"
+                        color="white"
+                        ariaLabel="loading"
+                    />
+                ) : (
+                    <p>Adicionar ao carrinho</p>
+                )}
+            </Botao>
         </Container>
     );
 }
@@ -82,7 +83,7 @@ const Container = styled.div`
 
 const ProductInfo = styled.div`
     width: 100%;
-    
+
     margin-top: 30px;
 
     h2 {
@@ -116,8 +117,8 @@ const Botao = styled.button`
     justify-content: center;
     align-items: center;
 
-    p{
+    p {
         font-size: 20px;
-        color: #FFFFFF;
+        color: #ffffff;
     }
 `;
