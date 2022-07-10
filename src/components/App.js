@@ -23,7 +23,7 @@ export default function App() {
                 <Route path="/sign-in" element={<TelaSignIn />} />
                 <Route path="/sign-up" element={<TelaSignUp />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/product" element={<ProductPage />} />
+                <Route path="/products/:productId" element={<ProductPage />} />
                 <Route path="/confirmacao" element={<TelaConfirmacao />} />
                 <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
