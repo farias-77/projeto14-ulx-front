@@ -36,7 +36,7 @@ function Inputs() {
             event.preventDefault();
             setCarregando(true);
 
-            const URL = "https://ulx-store.herokuapp.com/sign-up";
+            const URL = "http://localhost:5000/sign-up";
             const promise = axios.post(URL, {
                 name,
                 email,
