@@ -38,7 +38,7 @@ export default function Home() {
                         ? products
                               .filter((product) => product.category === "casa")
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product.userId}`}>
                                       <Product
                                           image={product.image}
                                           name={product.name}
@@ -61,7 +61,7 @@ export default function Home() {
                                       product.category === "esporte e lazer"
                               )
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product.userId}`}>
                                       <Product
                                           image={product.url}
                                           name={product.name}
@@ -85,7 +85,7 @@ export default function Home() {
                                       "eletrônicos e celulares"
                               )
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product.userId}`}>
                                       <Product
                                           image={product.url}
                                           name={product.name}
@@ -108,7 +108,7 @@ export default function Home() {
                                       product.category === "moda e beleza"
                               )
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product.userId}`}>
                                       <Product
                                           image={product.url}
                                           name={product.name}
