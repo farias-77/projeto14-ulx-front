@@ -36,7 +36,7 @@ export default function Home() {
                 <Products>
                     {products.length > 0
                         ? products
-                              .filter((product) => product.category === "Casa")
+                              .filter((product) => product.category === "casa")
                               .map((product) => (
                                   <Link to={`/products/${product.id}`}>
                                       <Product
@@ -58,7 +58,7 @@ export default function Home() {
                         ? products
                               .filter(
                                   (product) =>
-                                      product.category === "Esporte e lazer"
+                                      product.category === "esporte e lazer"
                               )
                               .map((product) => (
                                   <Link to={`/products/${product.id}`}>
@@ -82,7 +82,7 @@ export default function Home() {
                               .filter(
                                   (product) =>
                                       product.category ===
-                                      "Eletrônicos e celulares"
+                                      "eletrônicos e celulares"
                               )
                               .map((product) => (
                                   <Link to={`/products/${product.id}`}>
@@ -105,7 +105,7 @@ export default function Home() {
                         ? products
                               .filter(
                                   (product) =>
-                                      product.category === "Moda e beleza"
+                                      product.category === "moda e beleza"
                               )
                               .map((product) => (
                                   <Link to={`/products/${product.id}`}>
