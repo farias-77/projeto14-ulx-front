@@ -1,11 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import DigitaUlx from "./DigitaUlx.js";
+import { AuthContext } from "../../providers/Auth.js";
 
 function TelaWelcome() {
     const navigate = useNavigate();
+
+    const { user, setUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        setUser({
+            ...user,
+            entrou: false,
+        });
+    }, []);
 
     // Substituir por uma promise com os produtos depois
     setTimeout(() => navigate("/home"), 4000);
