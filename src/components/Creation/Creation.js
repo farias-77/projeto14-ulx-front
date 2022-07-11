@@ -2,7 +2,7 @@
 // import { Link, useNavigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./botao.css";
@@ -20,6 +20,13 @@ export default function Creation(props) {
     const [botao3, setBotao3] = useState("botao2");
     const [botao4, setBotao4] = useState("botao2");
     const [categoria, setCategoria] = useState("casa");
+    
+    useEffect(() => {
+        if(!localStorage.getItem("usuario")){
+            navigate("/sign-in");
+        }
+    }, []);
+    
     function Botao1(b, a) {
         setCategoria(a);
         if (b === "botao2") {
