@@ -30,6 +30,16 @@ function ac(){
         setCaixa2([...response.data])
     });
 }
+function ad(){
+    const promise = axios.post("http://localhost:5000/creationHistoric",  {
+        email
+    });
+    promise.then((response) => {
+        console.log('oi')
+      
+        
+    });
+}
 
 
 
@@ -47,7 +57,7 @@ function ac(){
             })}
            </Div>
            <Container2>
-           <Button >Finalizar pedido</Button>
+           <Button onClick={ad}>Finalizar pedido</Button>
            </Container2>
            <button className="visualizar" onClick={ac} >Visualize seu histórico</button>
            <h1>Seu histórico de compras </h1>
