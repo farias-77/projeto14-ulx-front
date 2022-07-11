@@ -5,22 +5,20 @@ import { Bars } from "react-loader-spinner";
 import axios from "axios";
 
 export default function ProductPage() {
-    
     const { productId } = useParams();
 
     // inicializar vazio para preencher com dados do db
-    const [ product, setProduct ] = useState({});
+    const [product, setProduct] = useState({});
     const [carregando, setCarregando] = useState(false);
 
     useEffect(() => {
-
-         const URL = `http://localhost:5000/products/${productId}`;
-         const promise = axios.get(URL);
+        const URL = `https://ulx-store.herokuapp.com/products/${productId}`;
+        const promise = axios.get(URL);
 
         //  atualizar com dados do bd
-         promise.then((response) => {
-             setProduct({...response.data});
-            });
+        promise.then((response) => {
+            setProduct({ ...response.data });
+        });
     }, []);
 
     function addCart() {
@@ -40,10 +38,16 @@ export default function ProductPage() {
                 alt="imagem produto"
             />
             <ProductInfo>
-                <h2>{ product.name ? product.name : "loading..." }</h2>
-                <h4>{ product.price ? `R$${product.price}` : "loading..." }</h4>
-                <h3>{ product.description ? product.description : "loading..."}</h3>
-                <h3>{ product.category ? `Categoria: ${product.category}` : "loading..." }</h3>
+                <h2>{product.name ? product.name : "loading..."}</h2>
+                <h4>{product.price ? `R$${product.price}` : "loading..."}</h4>
+                <h3>
+                    {product.description ? product.description : "loading..."}
+                </h3>
+                <h3>
+                    {product.category
+                        ? `Categoria: ${product.category}`
+                        : "loading..."}
+                </h3>
             </ProductInfo>
             <Botao onClick={() => addCart()}>
                 {carregando ? (

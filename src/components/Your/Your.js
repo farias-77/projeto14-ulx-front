@@ -10,9 +10,12 @@ export default function Your(props) {
     const [caixa, setCaixa] = useState([]);
 
     function ab() {
-        const promise = axios.post("http://localhost:5000/YourProduct", {
-            email,
-        });
+        const promise = axios.post(
+            "https://ulx-store.herokuapp.com/YourProduct",
+            {
+                email,
+            }
+        );
         promise.then((response) => {
             // console.log('oi')
             // console.log(response.data)

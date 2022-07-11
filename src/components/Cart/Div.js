@@ -22,9 +22,12 @@ export default function Divv(props) {
     }
 
     function ac() {
-        const promise = axios.post("http://localhost:5000/cartdelete", {
-            id,
-        });
+        const promise = axios.post(
+            "https://ulx-store.herokuapp.com/cartdelete",
+            {
+                id,
+            }
+        );
         promise.then((response) => {
             // console.log("oi");
 

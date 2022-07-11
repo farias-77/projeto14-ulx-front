@@ -58,7 +58,7 @@ export default function Creation(props) {
     }
     function end(e) {
         e.preventDefault();
-        const promise = axios.post("http://localhost:5000/creation", {
+        const promise = axios.post("https://ulx-store.herokuapp.com/creation", {
             email,
             url,
             name: nome,
