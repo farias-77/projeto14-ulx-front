@@ -8,7 +8,7 @@ import { AuthContext } from "../../providers/Auth.js";
 
 export default function Home() {
     const { user, setUser } = useContext(AuthContext);
-    const [ products, setProducts ] = useState([]);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         setUser({
@@ -18,18 +18,15 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-
         // alterar url quando resolver heroku
-        const URL = "http://localhost:5000/products"; 
+        const URL = "https://ulx-store.herokuapp.com/products";
         const promise = axios.get(URL);
 
         promise.then((response) => {
-            setProducts([... response.data])
-        })
-
-        promise.catch(() => {
+            setProducts([...response.data]);
         });
 
+        promise.catch(() => {});
     }, []);
 
     return (
@@ -37,80 +34,91 @@ export default function Home() {
             <Category>
                 <h1>Casa </h1>
                 <Products>
-                    
-                    {products.length > 0 ? 
-
-                        products.filter(product => product.category === "Casa").map((product) => 
-                        <Link to={`/products/${product.id}`} > 
-                        <Product   image={product.image} 
-                                   name={product.name} 
-                                   description={product.description} 
-                                   price={product.price} 
-                                   key={() => uuid()} /> 
-                        </Link>)
-                        :
-                        "Nenhum produto disponível nesta categoria"
-                    }                    
-                    
+                    {products.length > 0
+                        ? products
+                              .filter((product) => product.category === "casa")
+                              .map((product) => (
+                                  <Link to={`/products/${product.id}`}>
+                                      <Product
+                                          image={product.image}
+                                          name={product.name}
+                                          description={product.description}
+                                          price={product.price}
+                                          key={() => uuid()}
+                                      />
+                                  </Link>
+                              ))
+                        : "Nenhum produto disponível nesta categoria"}
                 </Products>
             </Category>
             <Category>
                 <h1>Esporte e lazer </h1>
                 <Products>
-                
-                    {products.length > 0 ? 
-
-                        products.filter(product => product.category === "Esporte e lazer").map((product) => 
-                        <Link to={`/products/${product.id}`} > 
-                        <Product    image={product.url} 
-                                    name={product.name} 
-                                    description={product.description} 
-                                    price={product.price} 
-                                    key={() => uuid()} /> 
-                        </Link>)
-                        :
-                        "Nenhum produto disponível nesta categoria"
-                    }
-                    
+                    {products.length > 0
+                        ? products
+                              .filter(
+                                  (product) =>
+                                      product.category === "esporte e lazer"
+                              )
+                              .map((product) => (
+                                  <Link to={`/products/${product.id}`}>
+                                      <Product
+                                          image={product.url}
+                                          name={product.name}
+                                          description={product.description}
+                                          price={product.price}
+                                          key={() => uuid()}
+                                      />
+                                  </Link>
+                              ))
+                        : "Nenhum produto disponível nesta categoria"}
                 </Products>
             </Category>
             <Category>
                 <h1>Eletrônicos e celulares </h1>
                 <Products>
-                
-                {products.length > 0 ? 
-
-                    products.filter(product => product.category === "Eletrônicos e celulares").map((product) => 
-                    <Link to={`/products/${product.id}`} > 
-                    <Product    image={product.url} 
-                                name={product.name} 
-                                description={product.description} 
-                                price={product.price} 
-                                key={() => uuid()} /> 
-                    </Link>)
-                    :
-                    "Nenhum produto disponível nesta categoria"
-                }
-
+                    {products.length > 0
+                        ? products
+                              .filter(
+                                  (product) =>
+                                      product.category ===
+                                      "eletrônicos e celulares"
+                              )
+                              .map((product) => (
+                                  <Link to={`/products/${product.id}`}>
+                                      <Product
+                                          image={product.url}
+                                          name={product.name}
+                                          description={product.description}
+                                          price={product.price}
+                                          key={() => uuid()}
+                                      />
+                                  </Link>
+                              ))
+                        : "Nenhum produto disponível nesta categoria"}
                 </Products>
             </Category>
             <Category>
                 <h1>Moda e beleza</h1>
                 <Products>
-                    
-                {products.length > 0 ? 
-
-                    products.filter(product => product.category === "Moda e beleza").map((product) => 
-                    <Link to={`/products/${product.id}`} > 
-                    <Product    image={product.url} 
-                                name={product.name} 
-                                description={product.description} 
-                                price={product.price} 
-                                key={() => uuid()} /> 
-                    </Link>)
-                    :
-                    "Nenhum produto disponível nesta categoria"
-                }
+                    {products.length > 0
+                        ? products
+                              .filter(
+                                  (product) =>
+                                      product.category === "moda e beleza"
+                              )
+                              .map((product) => (
+                                  <Link to={`/products/${product.id}`}>
+                                      <Product
+                                          image={product.url}
+                                          name={product.name}
+                                          description={product.description}
+                                          price={product.price}
+                                          key={() => uuid()}
+                                      />
+                                  </Link>
+                              ))
+                        : "Nenhum produto disponível nesta categoria"}
                 </Products>
             </Category>
         </Container>
