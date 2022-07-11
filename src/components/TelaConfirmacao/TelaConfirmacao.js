@@ -1,25 +1,86 @@
+/* eslint-disable react/no-array-index-key */
 import { ArrowLeftShort } from "react-bootstrap-icons";
-import React, { useEffect, useContext } from "react";
+import { Bars } from "react-loader-spinner";
+import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import axios from "axios";
 import { AuthContext } from "../../providers/Auth.js";
 import Endereco from "./Endereco/Endereco.js";
 import FormaPagamento from "./FormaPagamento/FormaPagamento.js";
 import Produtos from "./Produtos/Produtos.js";
-import Resumo from "./Resumo/Resumo.js";
+// import Resumo from "./Resumo/Resumo.js";
 import Rodape from "./Rodape/Rodape.js";
+import Aviso from "../Aviso.js";
+
+const prod = [
+    {
+        _id: { $oid: "62cc0ac40895a352ac991c01" },
+        url: "https://s2.glbimg.com/cLTN7IGQcpbSKMS6SQUzqpY9_uU=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/Z/u/wpbkW3SAiU434dVdz8dw/gabrieljesus.png",
+        name: "Gabigol",
+        description: "Gabriel da familia Gol",
+        category: "casa",
+        userId: { $oid: "62c7b6b33d4c96d6ed0b53a5" },
+        price: "3",
+    },
+    {
+        _id: { $oid: "62cc0ac40895a352ac991c01" },
+        url: "https://s2.glbimg.com/cLTN7IGQcpbSKMS6SQUzqpY9_uU=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/Z/u/wpbkW3SAiU434dVdz8dw/gabrieljesus.png",
+        name: "Gabigol",
+        description: "Gabriel da familia Gol",
+        category: "casa",
+        userId: { $oid: "62c7b6b33d4c96d6ed0b53a5" },
+        price: "3",
+    },
+];
 
 function TelaConfirmacao() {
     const navigate = useNavigate();
 
     const { user, setUser } = useContext(AuthContext);
+    const [carregando, setCarregando] = useState(false);
+    const [pagamento, setPagamento] = useState("");
+    const [produtos, setProdutos] = useState(prod);
+    const [mostraAviso, setMostraAviso] = useState([]);
+
+    function BoxAviso(mensagem) {
+        setMostraAviso([
+            ...mostraAviso,
+            <Aviso key={0} mensagem={mensagem} ok={() => setMostraAviso([])} />,
+        ]);
+    }
+
+    function getCarrinho({ token }) {
+        setCarregando(true);
+        const URL = "https://projeto14-ulx.herokuapp.com/cart";
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        const promise = axios.post(URL, config);
+        promise.then((response) => {
+            setCarregando(false);
+            setProdutos(response.date);
+        });
+        promise.catch((err) => {
+            setCarregando(false);
+            const mensagem =
+                typeof err.response.data === "undefined"
+                    ? "Servidor desconectado"
+                    : err.response.data;
+            BoxAviso(mensagem);
+        });
+    }
 
     useEffect(() => {
         setUser({
             ...user,
             entrou: false,
         });
+
+        getCarrinho(user);
     }, []);
 
     return (
@@ -38,17 +99,36 @@ function TelaConfirmacao() {
                 </BoxTexto>
             </Cabeca>
             <Principal>
-                <Endereco />
-                <FormaPagamento />
-                <Produtos />
-                <Resumo />
-                <p>
-                    Assim que clicar “Fazer Pedido”, Eu confirmo que li e que
-                    reconheço <span>todos os termos e condições</span>.
-                </p>
-                <EspacoVazio />
+                {carregando ? (
+                    <Bars
+                        height="40"
+                        width="40"
+                        color="var(--cor-roxo)"
+                        ariaLabel="loading"
+                    />
+                ) : (
+                    <>
+                        <Endereco />
+                        <FormaPagamento
+                            setPagamento={setPagamento}
+                            pagamento={pagamento}
+                            setProdutos={setProdutos}
+                        />
+                        {produtos.map((i, index) => (
+                            <Produtos key={index} produtos={i} />
+                        ))}
+                        {/* <Resumo /> */}
+                        <p>
+                            Assim que clicar “Fazer Pedido”, Eu confirmo que li
+                            e que reconheço{" "}
+                            <span>todos os termos e condições</span>.
+                        </p>
+                        <EspacoVazio />
+                    </>
+                )}
             </Principal>
-            <Rodape />
+            <Rodape produtos={produtos} />
+            {mostraAviso.map((i) => i)}
         </ContainerConfirmacao>
     );
 }

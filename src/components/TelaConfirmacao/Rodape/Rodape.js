@@ -1,18 +1,45 @@
+/* eslint-disable no-return-assign */
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Rodape() {
+import Aviso from "../../Aviso.js";
+
+function Rodape({ produtos }) {
+    let total = 0;
+    produtos.forEach((i) => (total += parseInt(i.price, 10)));
+
+    const navigate = useNavigate();
+    const [mostraAviso, setMostraAviso] = useState([]);
+
+    function BoxAviso(mensagem) {
+        setMostraAviso([
+            ...mostraAviso,
+            <Aviso
+                key={0}
+                mensagem={mensagem}
+                ok={() => {
+                    setMostraAviso([]);
+                    setTimeout(navigate("/"), 3000);
+                }}
+            />,
+        ]);
+    }
+
     return (
         <ContainerRodape>
             <BoxTexto>
                 <p>Total</p>
-                <p>R$ 38,98</p>
+                <p>R$ {total}</p>
             </BoxTexto>
             <BoxBotao>
-                <Botao>
+                <Botao
+                    onClick={() => BoxAviso("Compra realizada com sucesso!")}
+                >
                     <p>Fazer o pedido</p>
                 </Botao>
             </BoxBotao>
+            {mostraAviso.map((i) => i)}
         </ContainerRodape>
     );
 }
@@ -51,6 +78,7 @@ const BoxBotao = styled.div`
 const Botao = styled.div`
     width: 380px;
     height: 42px;
+    cursor: pointer;
 
     background: rgb(42, 181, 251);
     background: -moz-linear-gradient(

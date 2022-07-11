@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
 import Divv from "./Div.js";
 import Div2 from "./Div2.js";
-
 
 export default function Cart(props) {
     const { email } = props;
@@ -22,23 +23,27 @@ export default function Cart(props) {
         });
     }
     function ac() {
-        const promise = axios.post("https://projeto14-ulx.herokuapp.com/historic", {
-            email,
-        });
+        const promise = axios.post(
+            "https://projeto14-ulx.herokuapp.com/historic",
+            {
+                email,
+            }
+        );
         promise.then((response) => {
             // console.log("oi");
             // console.log(response.data);
             setCaixa2([...response.data]);
         });
     }
-    function ad(){
-        const promise = axios.post("https://ulx-store.herokuapp.com/creationHistoric",  {
-            email
-        });
+    function ad() {
+        const promise = axios.post(
+            "https://projeto14-ulx.herokuapp.com/creationHistoric",
+            {
+                email,
+            }
+        );
         promise.then((response) => {
-            console.log('oi')
-          
-            
+            console.log("oi");
         });
     }
 
