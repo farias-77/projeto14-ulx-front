@@ -23,7 +23,7 @@ function TelaConfirmacao() {
     }, []);
 
     return (
-        <>
+        <ContainerConfirmacao>
             <Cabeca>
                 <Setinha>
                     <ArrowLeftShort
@@ -49,9 +49,17 @@ function TelaConfirmacao() {
                 <EspacoVazio />
             </Principal>
             <Rodape />
-        </>
+        </ContainerConfirmacao>
     );
 }
+
+const ContainerConfirmacao = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--cor-fundo-tela);
+    z-index: 5;
+    position: absolute;
+`;
 
 const Principal = styled.main`
     p {
