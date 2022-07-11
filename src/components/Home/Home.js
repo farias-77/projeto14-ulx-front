@@ -82,7 +82,7 @@ export default function Home() {
                               .filter(
                                   (product) =>
                                       product.category ===
-                                      "eletrônicos e celulares"
+                                      "eletronicos e celulares"
                               )
                               .map((product) => (
                                   <Link to={`/products/${product._id}`}>
