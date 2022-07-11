@@ -7,7 +7,6 @@ import axios from "axios";
 export default function ProductPage() {
     const { productId } = useParams();
 
-    // inicializar vazio para preencher com dados do db
     const [product, setProduct] = useState({});
     const [carregando, setCarregando] = useState(false);
 
