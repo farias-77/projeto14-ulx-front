@@ -40,7 +40,7 @@ export default function Home() {
                               .map((product) => (
                                   <Link to={`/products/${product._id}`}>
                                       <Product
-                                          image={product.image}
+                                          image={product.url}
                                           name={product.name}
                                           description={product.description}
                                           price={product.price}
