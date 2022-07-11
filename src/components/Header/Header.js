@@ -52,8 +52,15 @@ export default function Header({ entrou }) {
                 </Link>
 
                 {/* adicionar link */}
-                <ion-icon name="add-circle" />
-                <ion-icon name="cart" />
+                <Link to="/creation">
+                    {" "}
+                    <ion-icon name="add-circle" />{" "}
+                </Link>
+
+                <Link to="/cart">
+                    {" "}
+                    <ion-icon name="cart" />{" "}
+                </Link>
 
                 <Link
                     to="/sign-in"
