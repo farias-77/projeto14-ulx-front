@@ -61,6 +61,12 @@ const NomeUsuario = styled.div`
     line-height: 16px;
     letter-spacing: -0.012em;
     color: #222222;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const NumeroUsuario = styled.div`
@@ -77,6 +83,12 @@ const RuaUsuario = styled.div`
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #999999;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const ComplementoUsuario = styled.div`
@@ -85,6 +97,12 @@ const ComplementoUsuario = styled.div`
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #999999;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const CidadeUsuario = styled.div`
@@ -93,6 +111,12 @@ const CidadeUsuario = styled.div`
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #999999;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 export default Endereco;
