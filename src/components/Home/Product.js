@@ -8,7 +8,7 @@ export default function Product({ image, name, description, price }){
             <Info>
                 <h3>{name}</h3>
                 <h4>{description}</h4>
-                <h5>R${price}</h5>
+                <h5>R$ {price}</h5>
             </Info>
             
         </Container>
