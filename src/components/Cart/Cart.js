@@ -1,14 +1,21 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Divv from "./Div.js";
 import Div2 from "./Div2.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart(props) {
     const { email } = props;
-    // const n = [1, 2, 3, 4, 5];
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!localStorage.getItem("usuario")){
+            navigate("/sign-in");
+        }
+    }, []);
 
     const [caixa, setCaixa] = useState([]);
     const [caixa2, setCaixa2] = useState([]);

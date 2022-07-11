@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { Bars } from "react-loader-spinner";
 import axios from "axios";
 
-export default function ProductPage() {
+export default function ProductPage(props) {
+    const { email } = props;
     const { productId } = useParams();
 
     const [product, setProduct] = useState({});
@@ -19,6 +20,16 @@ export default function ProductPage() {
             setProduct({ ...response.data });
         });
     }, []);
+    function addCart2(){
+        const promise = axios.post("https://projeto14-ulx.herokuapp.com/addCart", {
+            email,id:product._id
+        });
+        promise.then((response) => {
+            // console.log("oi");
+            // console.log(response.data);
+           ;
+        });
+    }
 
     function addCart() {
         // lógica para add ao carrinho
@@ -27,6 +38,7 @@ export default function ProductPage() {
         setTimeout(() => {
             setCarregando(false);
         }, 4000);
+        addCart2()
     }
 
     // trocar loading por spinner
