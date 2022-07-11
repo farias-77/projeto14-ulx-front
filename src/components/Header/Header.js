@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+ /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContext } from "react";

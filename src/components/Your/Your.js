@@ -8,7 +8,7 @@ export default function Your(props){
     const [caixa,setCaixa]=useState([])
     
     function ab(){
-    const promise = axios.post("http://localhost:5000/cart",  {
+    const promise = axios.post("http://localhost:5000/YourProduct",  {
         email
     });
     promise.then((response) => {
