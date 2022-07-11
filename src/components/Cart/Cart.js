@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
 import axios from "axios";
-
 import Divv from "./Div.js";
 import Div2 from "./Div2.js";
+
 
 export default function Cart(props) {
     const { email } = props;
@@ -12,7 +12,7 @@ export default function Cart(props) {
     const [caixa, setCaixa] = useState([]);
     const [caixa2, setCaixa2] = useState([]);
     function ab() {
-        const promise = axios.post("https://ulx-store.herokuapp.com/cart", {
+        const promise = axios.post("https://projeto14-ulx.herokuapp.com/cart", {
             email,
         });
         promise.then((response) => {
@@ -22,13 +22,23 @@ export default function Cart(props) {
         });
     }
     function ac() {
-        const promise = axios.post("https://ulx-store.herokuapp.com/historic", {
+        const promise = axios.post("https://projeto14-ulx.herokuapp.com/historic", {
             email,
         });
         promise.then((response) => {
             // console.log("oi");
             // console.log(response.data);
             setCaixa2([...response.data]);
+        });
+    }
+    function ad(){
+        const promise = axios.post("https://ulx-store.herokuapp.com/creationHistoric",  {
+            email
+        });
+        promise.then((response) => {
+            console.log('oi')
+          
+            
         });
     }
 
@@ -52,7 +62,7 @@ export default function Cart(props) {
                 ))}
             </Div>
             <Container2>
-                <Button>Finalizar pedido</Button>
+                <Button onClick={ad}>Finalizar pedido</Button>
             </Container2>
             <button type="button" className="visualizar" onClick={ac}>
                 Visualize seu histórico

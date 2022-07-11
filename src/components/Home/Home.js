@@ -19,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
         // alterar url quando resolver heroku
-        const URL = "https://ulx-store.herokuapp.com/products";
+        const URL = "https://projeto14-ulx.herokuapp.com/products";
         const promise = axios.get(URL);
 
         promise.then((response) => {
@@ -38,9 +38,9 @@ export default function Home() {
                         ? products
                               .filter((product) => product.category === "casa")
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product._id}`}>
                                       <Product
-                                          image={product.image}
+                                          image={product.url}
                                           name={product.name}
                                           description={product.description}
                                           price={product.price}
@@ -61,7 +61,7 @@ export default function Home() {
                                       product.category === "esporte e lazer"
                               )
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product._id}`}>
                                       <Product
                                           image={product.url}
                                           name={product.name}
@@ -82,10 +82,10 @@ export default function Home() {
                               .filter(
                                   (product) =>
                                       product.category ===
-                                      "eletrônicos e celulares"
+                                      "eletronicos e celulares"
                               )
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product._id}`}>
                                       <Product
                                           image={product.url}
                                           name={product.name}
@@ -108,7 +108,7 @@ export default function Home() {
                                       product.category === "moda e beleza"
                               )
                               .map((product) => (
-                                  <Link to={`/products/${product.id}`}>
+                                  <Link to={`/products/${product._id}`}>
                                       <Product
                                           image={product.url}
                                           name={product.name}

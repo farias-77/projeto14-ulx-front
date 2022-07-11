@@ -11,7 +11,7 @@ export default function Your(props) {
 
     function ab() {
         const promise = axios.post(
-            "https://ulx-store.herokuapp.com/YourProduct",
+            "https://projeto14-ulx.herokuapp.com/YourProduct",
             {
                 email,
             }

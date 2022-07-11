@@ -20,7 +20,7 @@ export default function Divv(props) {
 
     function ac() {
         const promise = axios.post(
-            "https://ulx-store.herokuapp.com/yourdelete",
+            "https://projeto14-ulx.herokuapp.com/yourdelete",
             {
                 id,
             }
