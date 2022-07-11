@@ -12,7 +12,7 @@ export default function ProductPage() {
     const [carregando, setCarregando] = useState(false);
 
     useEffect(() => {
-        const URL = `https://ulx-store.herokuapp.com/products/${productId}`;
+        const URL = `https://projeto14-ulx.herokuapp.com/products/${productId}`;
         const promise = axios.get(URL);
 
         //  atualizar com dados do bd

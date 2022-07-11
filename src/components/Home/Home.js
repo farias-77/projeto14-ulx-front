@@ -19,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
         // alterar url quando resolver heroku
-        const URL = "https://ulx-store.herokuapp.com/products";
+        const URL = "https://projeto14-ulx.herokuapp.com/products";
         const promise = axios.get(URL);
 
         promise.then((response) => {

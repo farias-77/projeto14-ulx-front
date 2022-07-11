@@ -12,7 +12,7 @@ export default function Cart(props) {
     const [caixa, setCaixa] = useState([]);
     const [caixa2, setCaixa2] = useState([]);
     function ab() {
-        const promise = axios.post("https://ulx-store.herokuapp.com/cart", {
+        const promise = axios.post("https://projeto14-ulx.herokuapp.com/cart", {
             email,
         });
         promise.then((response) => {
@@ -22,7 +22,7 @@ export default function Cart(props) {
         });
     }
     function ac() {
-        const promise = axios.post("https://ulx-store.herokuapp.com/historic", {
+        const promise = axios.post("https://projeto14-ulx.herokuapp.com/historic", {
             email,
         });
         promise.then((response) => {
