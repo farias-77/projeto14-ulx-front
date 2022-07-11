@@ -85,21 +85,21 @@ export default function Creation(props) {
                 </button>{" "}
                 <button
                     type="button"
-                    onClick={() => Botao2(botao2, "esporte")}
+                    onClick={() => Botao2(botao2, "esporte e lazer")}
                     className={botao2}
                 >
                     Esporte e lazer
                 </button>{" "}
                 <button
                     type="button"
-                    onClick={() => Botao3(botao3, "eletronicos")}
+                    onClick={() => Botao3(botao3, "eletronicos e celulares")}
                     className={botao3}
                 >
                     Eletronicos e celulares
                 </button>{" "}
                 <button
                     type="button"
-                    onClick={() => Botao4(botao4, "moda")}
+                    onClick={() => Botao4(botao4, "moda e beleza")}
                     className={botao4}
                 >
                     Moda e beleza
