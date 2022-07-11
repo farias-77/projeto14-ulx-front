@@ -1,7 +1,31 @@
 import styled from "styled-components";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Divv(props){
-    const {email,url,name,description,category,price} =props
+    const {email,url,name,description,category,price,id} =props
+    const [chave,setChave]=useState('deletar')
+   
+    function deletar(){
+        if(chave==='deletar'){
+            setChave('deletar2')
+        }else{
+            setChave('deletar')
+        }
+
+    }
+
+    function ac(){
+        const promise = axios.post("http://localhost:5000/yourdelete",  {
+            id
+        });
+        promise.then((response) => {
+            console.log('oi')
+          
+            document.location.reload(true);
+        });
+    }
+    
     return(
 
         <Item>
@@ -14,14 +38,37 @@ export default function Divv(props){
                 <h4>{description}</h4>
                 <h5>R$ {price}</h5>
             </Caixa>
-         
+            <button onClick={deletar}>Excluir</button>
+            <div className={chave}>Excluir do carrinho?
+            <Div>
+            <Sim>
+                <p onClick={ac}>SIM</p>
+            </Sim>
+            <Nao onClick={deletar}>
+                <p>NÃO</p>
+            </Nao>
+            </Div>
+            </div>
            
             
         </Item>
         
         )
         }
-        
+        const Div= styled.div`
+        display:flex;
+
+`;
+        const Sim= styled.div`
+        margin-right:30px;
+        color:hsl(28, 99%, 50%);
+
+
+`;
+        const Nao= styled.div`
+        color:rgb(110, 10, 214);
+
+`;
         const Item = styled.div`
         position: relative;
         margin-left: 15px;
