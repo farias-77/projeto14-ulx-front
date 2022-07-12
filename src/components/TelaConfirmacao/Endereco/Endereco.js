@@ -10,14 +10,10 @@ function Endereco() {
             </Pin>
             <Textos>
                 <NomeUsuario>Vinicius Cavalcante</NomeUsuario>
-                <NumeroUsuario>+55 62982639600</NumeroUsuario>
-                <RuaUsuario>
-                    Primeira Avenida,Setor Leste Universitário
-                </RuaUsuario>
-                <ComplementoUsuario>
-                    Quadra 102-C Lote 06 Numero 1131
-                </ComplementoUsuario>
-                <CidadeUsuario>Goiânia,Goias,Brazil,74605020</CidadeUsuario>
+                <NumeroUsuario>+55 62996009600</NumeroUsuario>
+                <RuaUsuario>Avenida,Setor</RuaUsuario>
+                <ComplementoUsuario>Quadra Lote Numero</ComplementoUsuario>
+                <CidadeUsuario>Cidade,Estado,Pais,12345-789</CidadeUsuario>
             </Textos>
             <SetaDireita>
                 <ChevronCompactRight />
@@ -61,6 +57,12 @@ const NomeUsuario = styled.div`
     line-height: 16px;
     letter-spacing: -0.012em;
     color: #222222;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const NumeroUsuario = styled.div`
@@ -77,6 +79,12 @@ const RuaUsuario = styled.div`
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #999999;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const ComplementoUsuario = styled.div`
@@ -85,6 +93,12 @@ const ComplementoUsuario = styled.div`
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #999999;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const CidadeUsuario = styled.div`
@@ -93,6 +107,12 @@ const CidadeUsuario = styled.div`
     line-height: 16px;
     letter-spacing: 0.04em;
     color: #999999;
+    max-width: 295px;
+    max-height: 16px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 export default Endereco;

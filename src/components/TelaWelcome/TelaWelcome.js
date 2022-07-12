@@ -35,6 +35,8 @@ const ContainerWelcome = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    z-index: 5;
+    position: absolute;
 `;
 
 export default TelaWelcome;

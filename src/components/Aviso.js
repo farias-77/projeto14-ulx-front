@@ -51,7 +51,7 @@ function Aviso({ mensagem, sim, nao, ok }) {
 
 const ContainerAviso = styled.div`
     position: fixed;
-    z-index: 5;
+    z-index: 10;
     top: 0;
     right: 0;
     bottom: 0;

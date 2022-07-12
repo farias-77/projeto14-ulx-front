@@ -1,29 +1,75 @@
+/* eslint-disable react/no-array-index-key */
 import { ArrowLeftShort } from "react-bootstrap-icons";
-import React, { useEffect, useContext } from "react";
+import { Bars } from "react-loader-spinner";
+import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import axios from "axios";
 import { AuthContext } from "../../providers/Auth.js";
-import Endereco from "./Endereco/Endereco.js";
+// import Endereco from "./Endereco/Endereco.js";
 import FormaPagamento from "./FormaPagamento/FormaPagamento.js";
 import Produtos from "./Produtos/Produtos.js";
-import Resumo from "./Resumo/Resumo.js";
+// import Resumo from "./Resumo/Resumo.js";
 import Rodape from "./Rodape/Rodape.js";
+import Aviso from "../Aviso.js";
 
 function TelaConfirmacao() {
     const navigate = useNavigate();
 
     const { user, setUser } = useContext(AuthContext);
+    const [carregando, setCarregando] = useState(false);
+    const [pagamento, setPagamento] = useState("");
+    const [produtos, setProdutos] = useState([]);
+    const [mostraAviso, setMostraAviso] = useState([]);
+
+    function BoxAviso(mensagem) {
+        setMostraAviso([
+            ...mostraAviso,
+            <Aviso key={0} mensagem={mensagem} ok={() => setMostraAviso([])} />,
+        ]);
+    }
+
+    function getCarrinho({ token, email }) {
+        setCarregando(true);
+        const URL = "https://projeto14-ulx.herokuapp.com/cart";
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+        const body = { email };
+        const promise = axios.post(URL, body, config);
+        promise.then((response) => {
+            setCarregando(false);
+            setProdutos(response.data);
+        });
+        promise.catch((err) => {
+            setCarregando(false);
+            const mensagem =
+                typeof err.response.data === "undefined"
+                    ? "Servidor desconectado"
+                    : err.response.data;
+            BoxAviso(mensagem);
+        });
+    }
 
     useEffect(() => {
         setUser({
             ...user,
             entrou: false,
         });
+        const usuario = localStorage.getItem("usuario");
+        if (usuario) {
+            const objetoUsuario = JSON.parse(usuario);
+            getCarrinho(objetoUsuario);
+            return;
+        }
+        getCarrinho(user);
     }, []);
 
     return (
-        <>
+        <ContainerConfirmacao>
             <Cabeca>
                 <Setinha>
                     <ArrowLeftShort
@@ -38,20 +84,57 @@ function TelaConfirmacao() {
                 </BoxTexto>
             </Cabeca>
             <Principal>
-                <Endereco />
-                <FormaPagamento />
-                <Produtos />
-                <Resumo />
-                <p>
-                    Assim que clicar “Fazer Pedido”, Eu confirmo que li e que
-                    reconheço <span>todos os termos e condições</span>.
-                </p>
-                <EspacoVazio />
+                {carregando ? (
+                    <Centralizar>
+                        <Bars
+                            height="40"
+                            width="40"
+                            color="var(--cor-roxo)"
+                            ariaLabel="loading"
+                        />
+                    </Centralizar>
+                ) : (
+                    <>
+                        {/* <Endereco /> */}
+                        <FormaPagamento
+                            setPagamento={setPagamento}
+                            pagamento={pagamento}
+                            setProdutos={setProdutos}
+                        />
+                        {produtos.map((i, index) => (
+                            <Produtos key={index} produtos={i} />
+                        ))}
+                        {/* <Resumo /> */}
+                        <p>
+                            Assim que clicar “Fazer Pedido”, Eu confirmo que li
+                            e que reconheço{" "}
+                            <span>todos os termos e condições</span>.
+                        </p>
+                        <EspacoVazio />
+                    </>
+                )}
             </Principal>
-            <Rodape />
-        </>
+            <Rodape produtos={produtos} pagamento={pagamento} />
+            {mostraAviso.map((i) => i)}
+        </ContainerConfirmacao>
     );
 }
+
+const Centralizar = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ContainerConfirmacao = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--cor-fundo-tela);
+    z-index: 5;
+    position: absolute;
+`;
 
 const Principal = styled.main`
     p {

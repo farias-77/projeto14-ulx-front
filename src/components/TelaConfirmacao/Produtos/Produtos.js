@@ -1,23 +1,24 @@
-import { PencilSquare, ShopWindow } from "react-bootstrap-icons";
+// import { PencilSquare, ShopWindow } from "react-bootstrap-icons";
+import { ShopWindow } from "react-bootstrap-icons";
 import styled from "styled-components";
 import React from "react";
 
 import Produto from "./Produto.js";
 
-function Produtos() {
+function Produtos({ produtos }) {
     return (
-        <ContainerEndereco>
+        <ContainerProdutos>
             <Pin>
                 <ShopWindow size={20} color="var(--cor-roxo)" />
             </Pin>
-            <Edita>
+            {/* <Edita>
                 <PencilSquare size={16} color="#989898" />
-            </Edita>
+            </Edita> */}
             <Textos>
-                <NomeLoja>Daystar Brasil Store</NomeLoja>
+                <NomeLoja>Ulx{/* Daystar Brasil Store */}</NomeLoja>
             </Textos>
-            <Produto />
-            <Divisor />
+            <Produto produto={produtos} />
+            {/* <Divisor />
             <Rodape>
                 <BoxRemessa>
                     <Remessa>Remessa: </Remessa>
@@ -28,14 +29,15 @@ function Produtos() {
                         Estimativa de entrega: <span>20 jul</span>.
                     </Estimativa>
                 </BoxEstimativa>
-            </Rodape>
-        </ContainerEndereco>
+            </Rodape> */}
+        </ContainerProdutos>
     );
 }
 
-const ContainerEndereco = styled.div`
+const ContainerProdutos = styled.div`
     width: 100%;
-    height: 205px;
+    /* height: 205px; */
+    height: 150px;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
@@ -49,11 +51,11 @@ const Pin = styled.div`
     position: absolute;
 `;
 
-const Edita = styled.div`
-    position: absolute;
-    top: 13px;
-    right: 13px;
-`;
+// const Edita = styled.div`
+//     position: absolute;
+//     top: 13px;
+//     right: 13px;
+// `;
 
 const Textos = styled.div`
     margin-top: 1px;
@@ -70,52 +72,52 @@ const NomeLoja = styled.div`
     color: #222222;
 `;
 
-const Divisor = styled.div`
-    width: 100%;
-    margin-top: 18px;
-    margin-bottom: 14px;
-    border: 1px solid #f2f2f2;
-`;
+// const Divisor = styled.div`
+//     width: 100%;
+//     margin-top: 18px;
+//     margin-bottom: 14px;
+//     border: 1px solid #f2f2f2;
+// `;
 
-const Rodape = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
+// const Rodape = styled.div`
+//     display: flex;
+//     justify-content: space-between;
+// `;
 
-const BoxRemessa = styled.div`
-    width: 74px;
-`;
+// const BoxRemessa = styled.div`
+//     width: 74px;
+// `;
 
-const Remessa = styled.div`
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.06em;
-    color: #000000;
-    margin-bottom: 3px;
-`;
+// const Remessa = styled.div`
+//     font-weight: 600;
+//     font-size: 12px;
+//     line-height: 14px;
+//     letter-spacing: 0.06em;
+//     color: #000000;
+//     margin-bottom: 3px;
+// `;
 
-const PrecoRemessa = styled.div`
-    font-weight: 300;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: 0.08em;
-    color: #999999;
-`;
+// const PrecoRemessa = styled.div`
+//     font-weight: 300;
+//     font-size: 10px;
+//     line-height: 12px;
+//     letter-spacing: 0.08em;
+//     color: #999999;
+// `;
 
-const BoxEstimativa = styled.div``;
+// const BoxEstimativa = styled.div``;
 
-const Estimativa = styled.div`
-    margin-top: 5px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.04em;
-    color: #999999;
+// const Estimativa = styled.div`
+//     margin-top: 5px;
+//     font-weight: 400;
+//     font-size: 12px;
+//     line-height: 14px;
+//     letter-spacing: 0.04em;
+//     color: #999999;
 
-    span {
-        color: black;
-    }
-`;
+//     span {
+//         color: black;
+//     }
+// `;
 
 export default Produtos;
