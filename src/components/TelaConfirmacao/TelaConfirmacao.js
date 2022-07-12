@@ -76,7 +76,7 @@ function TelaConfirmacao() {
                         size={30}
                         color="white"
                         cursor="pointer"
-                        onClick={() => navigate(-1)}
+                        onClick={() => navigate('/')}
                     />
                 </Setinha>
                 <BoxTexto>
