@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Divv from "./Div.js";
 import Div2 from "./Div2.js";
-import { useNavigate } from "react-router-dom";
 
 export default function Cart(props) {
     const { email } = props;
@@ -50,7 +50,7 @@ export default function Cart(props) {
             }
         );
         promise.then((response) => {
-            console.log("oi");
+            navigate('/confirmacao');
         });
     }
 

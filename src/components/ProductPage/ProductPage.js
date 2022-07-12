@@ -26,7 +26,8 @@ export default function ProductPage(props) {
         });
         promise.then((response) => {
             // console.log("oi");
-            // console.log(response.data);
+            // eslint-disable-next-line
+            console.log(response.data);
            ;
         });
     }

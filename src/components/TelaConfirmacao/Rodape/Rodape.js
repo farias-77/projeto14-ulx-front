@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import Aviso from "../../Aviso.js";
 
-function Rodape({ produtos }) {
+function Rodape({ produtos, pagamento }) {
     let total = 0;
     produtos.forEach((i) => (total += parseInt(i.price, 10)));
 
@@ -25,7 +25,6 @@ function Rodape({ produtos }) {
             />,
         ]);
     }
-
     return (
         <ContainerRodape>
             <BoxTexto>
@@ -34,7 +33,9 @@ function Rodape({ produtos }) {
             </BoxTexto>
             <BoxBotao>
                 <Botao
+                    type="submit"
                     onClick={() => BoxAviso("Compra realizada com sucesso!")}
+                    disabled={pagamento === ''}
                 >
                     <p>Fazer o pedido</p>
                 </Botao>
@@ -75,7 +76,7 @@ const BoxBotao = styled.div`
     justify-content: center;
 `;
 
-const Botao = styled.div`
+const Botao = styled.button`
     width: 380px;
     height: 42px;
     cursor: pointer;

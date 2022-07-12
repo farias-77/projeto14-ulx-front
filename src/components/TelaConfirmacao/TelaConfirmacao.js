@@ -7,33 +7,12 @@ import styled from "styled-components";
 
 import axios from "axios";
 import { AuthContext } from "../../providers/Auth.js";
-import Endereco from "./Endereco/Endereco.js";
+// import Endereco from "./Endereco/Endereco.js";
 import FormaPagamento from "./FormaPagamento/FormaPagamento.js";
 import Produtos from "./Produtos/Produtos.js";
 // import Resumo from "./Resumo/Resumo.js";
 import Rodape from "./Rodape/Rodape.js";
 import Aviso from "../Aviso.js";
-
-const prod = [
-    {
-        _id: { $oid: "62cc0ac40895a352ac991c01" },
-        url: "https://s2.glbimg.com/cLTN7IGQcpbSKMS6SQUzqpY9_uU=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/Z/u/wpbkW3SAiU434dVdz8dw/gabrieljesus.png",
-        name: "Gabigol",
-        description: "Gabriel da familia Gol",
-        category: "casa",
-        userId: { $oid: "62c7b6b33d4c96d6ed0b53a5" },
-        price: "3",
-    },
-    {
-        _id: { $oid: "62cc0ac40895a352ac991c01" },
-        url: "https://s2.glbimg.com/cLTN7IGQcpbSKMS6SQUzqpY9_uU=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/Z/u/wpbkW3SAiU434dVdz8dw/gabrieljesus.png",
-        name: "Gabigol",
-        description: "Gabriel da familia Gol",
-        category: "casa",
-        userId: { $oid: "62c7b6b33d4c96d6ed0b53a5" },
-        price: "3",
-    },
-];
 
 function TelaConfirmacao() {
     const navigate = useNavigate();
@@ -41,7 +20,7 @@ function TelaConfirmacao() {
     const { user, setUser } = useContext(AuthContext);
     const [carregando, setCarregando] = useState(false);
     const [pagamento, setPagamento] = useState("");
-    const [produtos, setProdutos] = useState(prod);
+    const [produtos, setProdutos] = useState([]);
     const [mostraAviso, setMostraAviso] = useState([]);
 
     function BoxAviso(mensagem) {
@@ -51,7 +30,7 @@ function TelaConfirmacao() {
         ]);
     }
 
-    function getCarrinho({ token }) {
+    function getCarrinho({ token, email }) {
         setCarregando(true);
         const URL = "https://projeto14-ulx.herokuapp.com/cart";
         const config = {
@@ -59,10 +38,11 @@ function TelaConfirmacao() {
                 Authorization: `Bearer ${token}`,
             },
         };
-        const promise = axios.post(URL, config);
+        const body = { email };
+        const promise = axios.post(URL, body, config);
         promise.then((response) => {
             setCarregando(false);
-            setProdutos(response.date);
+            setProdutos(response.data);
         });
         promise.catch((err) => {
             setCarregando(false);
@@ -79,7 +59,12 @@ function TelaConfirmacao() {
             ...user,
             entrou: false,
         });
-
+        const usuario = localStorage.getItem("usuario");
+        if (usuario) {
+            const objetoUsuario = JSON.parse(usuario);
+            getCarrinho(objetoUsuario);
+            return;
+        }
         getCarrinho(user);
     }, []);
 
@@ -100,15 +85,17 @@ function TelaConfirmacao() {
             </Cabeca>
             <Principal>
                 {carregando ? (
-                    <Bars
-                        height="40"
-                        width="40"
-                        color="var(--cor-roxo)"
-                        ariaLabel="loading"
-                    />
+                    <Centralizar>
+                        <Bars
+                            height="40"
+                            width="40"
+                            color="var(--cor-roxo)"
+                            ariaLabel="loading"
+                        />
+                    </Centralizar>
                 ) : (
                     <>
-                        <Endereco />
+                        {/* <Endereco /> */}
                         <FormaPagamento
                             setPagamento={setPagamento}
                             pagamento={pagamento}
@@ -127,11 +114,19 @@ function TelaConfirmacao() {
                     </>
                 )}
             </Principal>
-            <Rodape produtos={produtos} />
+            <Rodape produtos={produtos} pagamento={pagamento} />
             {mostraAviso.map((i) => i)}
         </ContainerConfirmacao>
     );
 }
+
+const Centralizar = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 const ContainerConfirmacao = styled.div`
     width: 100vw;

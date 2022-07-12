@@ -10,14 +10,10 @@ function Endereco() {
             </Pin>
             <Textos>
                 <NomeUsuario>Vinicius Cavalcante</NomeUsuario>
-                <NumeroUsuario>+55 62982639600</NumeroUsuario>
-                <RuaUsuario>
-                    Primeira Avenida,Setor Leste Universitário
-                </RuaUsuario>
-                <ComplementoUsuario>
-                    Quadra 102-C Lote 06 Numero 1131
-                </ComplementoUsuario>
-                <CidadeUsuario>Goiânia,Goias,Brazil,74605020</CidadeUsuario>
+                <NumeroUsuario>+55 62996009600</NumeroUsuario>
+                <RuaUsuario>Avenida,Setor</RuaUsuario>
+                <ComplementoUsuario>Quadra Lote Numero</ComplementoUsuario>
+                <CidadeUsuario>Cidade,Estado,Pais,12345-789</CidadeUsuario>
             </Textos>
             <SetaDireita>
                 <ChevronCompactRight />
